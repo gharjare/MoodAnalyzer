@@ -16,14 +16,19 @@ namespace MoodAnalizer
 
         public string AnalyzeMood(string message)
         {
+            
             try
             {
+                if(message.ToLower().Equals(string.Empty))
+                {
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EMPTY, "Message is null");
+                }
                 if (message.ToLower().Contains("Sad"))
                     return "Sad";
                 return "Happy";
             }catch(MoodAnalyserException ex)
             {
-                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL,"")
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL, "Message is null");
             }
         }
         
