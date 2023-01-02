@@ -16,9 +16,15 @@ namespace MoodAnalizer
 
         public string AnalyzeMood(string message)
         {
-            if (message.ToLower().Contains("Sad"))
-                return "Sad";
-            return "Happy";
+            try
+            {
+                if (message.ToLower().Contains("Sad"))
+                    return "Sad";
+                return "Happy";
+            }catch(MoodAnalyserException ex)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL,"")
+            }
         }
         
         
